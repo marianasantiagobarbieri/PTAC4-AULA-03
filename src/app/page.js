@@ -2,11 +2,12 @@
 import { useState } from "react";
 import { handlerAcessUser } from "./functions/handlerAcess"
 import { useRouter } from "next/navigation";
+import './globals.css'
 
 export default function Login() {
   const [email, setEmail] = useState();
-  const [password,setPassword] = useState();
-  
+  const [password, setPassword] = useState();
+
   const { push } = useRouter();
   const handlerLogin = (e) => {
     e.preventDefault();
@@ -16,21 +17,28 @@ export default function Login() {
 
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handlerLogin}>
-        <input
-          placeholder='E-mail'
-          type="email"
-          onChange={(e) => { setEmail(e.target.value) }}>
-        </input>
-        <input
-          placeholder='Senha'
-          type='password'
-          onChange={(e) => { setPassword(e.target.value) }}>
-        </input>
-        <button>Entrar</button>
-      </form>
+    <div className='LoginBox'>
+      <div className='LoginContainer'>
+        <h1>Login</h1>
+        <form className='LoginForm' onSubmit={handlerLogin}>
+          <input
+            className='LoginInput'
+            placeholder='E-mail'
+            type="email"
+            onChange={(e) => { setEmail(e.target.value) }}>
+          </input>
+          <span className='LoginSpam'></span>
+
+          <input
+            className='LoginInput'
+            placeholder='Senha'
+            type='password'
+            onChange={(e) => { setPassword(e.target.value) }}>
+          </input>
+          <span className='LoginSpam'></span>
+          <button className='LoginBotaoCadastrar'>Entrar</button>
+        </form>
+      </div>
     </div>
   )
 }
